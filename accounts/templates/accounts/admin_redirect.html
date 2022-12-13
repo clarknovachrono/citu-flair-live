@@ -1,0 +1,56 @@
+{% extends 'accounts/navbar.html' %}
+{% block content %}
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .manage_links{
+        display: block;
+
+    }
+    .manage_input{
+        margin: 20px auto 0;
+        width: 50%;
+        height: 50px;
+        outline: none;
+        font-family: 'Montserrat', sans-serif;
+        color: #741e1e;
+        font-weight: bold;
+        display: block;
+        cursor: pointer;
+    }
+
+    .manage_input:hover{
+        background: var(--gold);
+    }
+    .manage_flair_parent{
+        background: var(--maroon);
+        height: 400px;
+        padding-top: 50px;
+    }
+    .manage_flair {
+        padding: 20px;
+        width: 600px;
+        height: 300px;
+        margin: 0px auto;
+        text-align: center;
+
+
+    }
+    h1{
+        color: var(--gold);
+        font-size: 60px;
+    }
+</style>
+<section class="manage_flair_parent">
+    <div class="manage_flair">
+    <h1 >Flair Admin</h1>
+    <a href="{% url 'adminuserlogs' %}" class="manage"><input type="submit" value="USER LOGS" class="manage_input"></a>
+    <a href="{% url 'adminhealthformlogs' %}" class="manage"><input type="submit" value="HEALTH FORM LOGS" class="manage_input"></a>
+</div>
+</section>
+{% include 'accounts/footer.html' %}
+
+{% endblock content %}

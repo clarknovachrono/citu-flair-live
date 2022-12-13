@@ -1,0 +1,40 @@
+{% extends 'accounts/navbar.html' %}
+{% load static %}
+{% block content %}
+<style>
+    #delete_heading{
+        padding: 20px;
+    }
+    #delete_health_form {
+        margin-left: 20px;
+        height: 40px;
+        outline: none;
+        border: none;
+        font-family: 'Montserrat', sans-serif;
+        color: #741e1e;
+        font-weight: bold;
+        width: 90px;
+        background: var(--maroon);
+        cursor: pointer;
+        color: var(--gold);
+    }
+    #cancel_delete_health_form{
+        text-align: center;
+        padding: 10px;
+        font-family: 'Montserrat', sans-serif;
+        color: #741e1e;
+        font-weight: bold;
+        width: 90px;
+        background: var(--gold);
+        cursor: pointer;
+        color: var(--maroon);
+    }
+</style>
+    <h1 id="delete_heading">Are you sure you want to delete health form with the id of "{{ delete_health_form }}"?</h1>
+    <form action="{% url 'admindeletehealthform' delete_health_form.id %}" method="POST">
+        {% csrf_token %}
+        <a href=""> <input type="submit" value="Confirm" id="delete_health_form"> </a>
+        <a href="{% url 'adminhealthformlogs' %}" id="cancel_delete_health_form">Cancel</a>
+
+    </form>
+{% endblock content %}

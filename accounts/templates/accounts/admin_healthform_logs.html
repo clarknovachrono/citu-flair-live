@@ -1,0 +1,104 @@
+{% extends 'accounts/navbar.html' %}
+{% load static %}
+{% block content %}
+<style>
+    	#health_form_table{
+            border-spacing: 30px;
+            text-align: center;
+            margin: 0 auto;
+	    }
+	    #delete_health_form{
+            height: 35px;
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+            color: #741e1e;
+            font-weight: bold;
+            width: 80px;
+            border: none;
+            background: var(--maroon);
+            cursor: pointer;
+            color: var(--gold);
+	    }
+	    #update_health_form{
+            height: 35px;
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+            color: #741e1e;
+            font-weight: bold;
+            width: 80px;
+            border: none;
+            background: var(--gold);
+            cursor: pointer;
+            color: var(--maroon);
+	    }
+	    th{
+	        color: var(--maroon);
+	    }
+        td{
+            font-weight: bold;
+        }
+
+        label{
+            font-weight: bold;
+        }
+        #search_btn{
+            height: 30px;
+            font-family: 'Montserrat', sans-serif;
+            color: #741e1e;
+            font-weight: bold;
+            background: var(--gold);
+            outline: none;
+            border: none;
+            width: 90px;
+            cursor: pointer;
+        }
+        select{
+            padding: 10px;
+        }
+</style>
+    <div class="container">
+        <h1 style="margin: 20px 0 20px;">Total Health Forms: {{ total_health_form }}</h1>
+        <form action="" method="get">
+            {{ health_form_filter.form }}
+        <button type="submit" id="search_btn">Search</button>
+        </form>
+    </div>
+    <div class="container">
+
+    </div>
+
+    <table id="health_form_table">
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>Address</th>
+            <th>Traveled History</th>
+            <th>Travel Location</th>
+            <th>Experiencing symptoms</th>
+            <th>Specify Symptoms</th>
+            <th>Submitted by</th>
+            <th colspan="2">Action</th>
+        </tr>
+        {% for health_form in health_forms %}
+        <tr>
+            <td>{{ health_form.first_name }}</td>
+            <td>{{ health_form.last_name }}</td>
+            <td>{{ health_form.gender }}</td>
+            <td>{{ health_form.email }}</td>
+            <td>{{ health_form.phone_number }}</td>
+            <td>{{ health_form.address }}</td>
+            <td>{{ health_form.traveled_within_last_two_weeks }}</td>
+            <td>{{ health_form.travel_location }}</td>
+            <td> {{ health_form.experiencing_symptoms }}</td>
+            <td>{{ health_form.specify_symptoms }}</td>
+            <td> {{ health_form.health_form_submitted_by }}</td>
+            <td><a href="{% url 'adminupdatehealthform' health_form.id %}"><input type="submit" value="Update" id="update_health_form"> </a> </td>
+            <td><a href="{% url 'admindeletehealthform' health_form.id %}"><input type="submit" value="Delete" id="delete_health_form"> </a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock content %}

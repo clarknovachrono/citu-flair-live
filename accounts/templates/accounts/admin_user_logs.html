@@ -1,0 +1,69 @@
+{% extends 'accounts/navbar.html' %}
+{% load static %}
+{% block content %}
+<style>
+	#user_table{
+		border-spacing: 30px;
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	#update_user{
+		height: 35px;
+		outline: none;
+		font-family: 'Montserrat', sans-serif;
+		color: #741e1e;
+		font-weight: bold;
+		width: 80px;
+		border: none;
+		background: var(--gold);
+		cursor: pointer
+	}
+
+	#delete_user{
+		height: 35px;
+		outline: none;
+		font-family: 'Montserrat', sans-serif;
+		color: #741e1e;
+		font-weight: bold;
+		width: 80px;
+		border: none;
+		background: var(--maroon);
+		cursor: pointer;
+		color: var(--gold);
+	}
+	th{
+		color: var(--maroon);
+	}
+	td{
+		font-weight: bold;
+	}
+	#total_users{
+		text-align: center;
+		padding: 20px;
+	}
+
+</style>
+            <h1 id="total_users">Total <span style="color: var(--maroon);">users:</span> <span style="color: var(--gold);">{{ total_flair_users }}</span></h1>
+
+			<table id="user_table">
+				<tr>
+					<th>Username</th>
+					<th>Email</th>
+                    <th>Date Created</th>
+					<th>Last Login</th>
+					<th colspan="2">Action</th>
+				</tr>
+
+				{% for flair_user in flair_users %}
+					<tr>
+						<td>{{ flair_user.username }}</td>
+						<td>{{ flair_user.email }}</td>
+                        <td>{{ flair_user.date_created }}</td>
+						<td>NA</td>
+						<td><a href="{% url 'adminupdateuser' flair_user.id %}"><input type="submit" value="Update" id="update_user"> </a> </td>
+						<td><a href="{% url 'admindeleteuser' flair_user.id %}"><input type="submit" value="Delete" id="delete_user"> </a> </td>
+					</tr>
+				{% endfor %}
+            </table>
+{% endblock content %}

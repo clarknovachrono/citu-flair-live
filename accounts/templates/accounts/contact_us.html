@@ -1,0 +1,33 @@
+{% extends 'accounts/navbar.html' %}
+{% load static %}
+{% block content %}
+        <section class="contact">
+            <div class="container contact_container">
+
+                <div class="customer_service">
+                    <img src="{% static 'images/headset_icon.jpg' %}" alt="headset_icon">
+                    <h1>Customer Service</h1>
+                    <h2>You can contact our customer service for more inquiries</h2>
+                    <p>#8-7000</p>
+                </div>
+
+                <div class="customer_contact">
+                    <img src="{% static 'images/telephone_icon.jpg' %}" alt="telephone_icon">
+                    <h1>Contacts</h1>
+                    <h2>Our lines are always open for you</h2>
+                    <p>413-1273</p>
+                    <p>+639123456789</p>
+                </div>
+
+                <div class="emails">
+                    <img src="{% static 'images/email_icon.jpg' %}" alt="email_icon">
+                    <h1>Emails</h1>
+                    <h2>We have dedicated email addresses for you.</h2>
+                    <p>IT332PACTS@gmail.com</p>
+                    <p>IT332PACTS@cit.edu</p>
+                </div>
+
+            </div>
+        </section>
+        {% include 'accounts/footer.html' %}
+{% endblock content %}

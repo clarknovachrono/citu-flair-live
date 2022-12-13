@@ -1,0 +1,139 @@
+{% extends 'accounts/navbar.html' %}
+{% block content %}
+<style>
+
+	:root {
+			--maroon: #800000;
+			--gold: #ffd307;
+
+	}
+
+
+    h1, h2, p {
+        color: #fff;
+    }
+
+    .form_container {
+        background: var(--maroon);
+    }
+
+    #health_form {
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid black;
+    background: #400b05;
+    padding-bottom: 40px;
+}
+
+
+#health_form h1, h2{
+    margin: 10px 0;
+}
+
+#health_form p {
+    font-weight: bold;
+    padding: 20px;
+}
+
+#health_form input, select {
+    width: 40%;
+    height: 40px;
+}
+
+.health_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.health_left{
+    width: 50%;
+}
+.health_right{
+    width: 50%;
+}
+#messages{
+    color: var(--gold);
+}
+
+</style>
+    <div class="form_container">
+            <form action="" method="POST" id="health_form" enctype="multipart/form-data">
+        <h1>Cebu Institute of Technology - University</h1>
+        <h2>Health and Travel History Disclosure Form</h2>
+        {% csrf_token %}
+        <div class="health_container">
+            <div class="health_left">
+            <p>First name</p>
+            {{ form.first_name }}
+            <p>Last name</p>
+            {{ form.last_name }}
+            <p>Gender</p>
+            {{ form.gender }}
+            <p>Email name</p>
+            {{ form.email }}
+            <p>Phone number (+63)</p>
+            {{ form.phone_number }}
+                 <p>Address</p>
+            {{ form.address }}
+            </div>
+            <div class="health_right">
+
+            <p>Traveled within last two weeks</p>
+            {{ form.traveled_within_last_two_weeks }}
+                <p>Travel Location</p>
+                {{ form.travel_location }}
+            <p>Experiencing symptoms</p>
+            {{ form.experiencing_symptoms }}
+                <p>Specify symptoms</p>
+                {{ form.specify_symptoms }}
+            <p>Vaccine card {{ form.vaccine_card }}</p>
+
+            <p>Photo {{ form.user_photo }}</p>
+
+            <p><input type="submit"></p>
+                {% for message in messages %}
+					<p id="messages">{{message}}</p>
+				{% endfor %}
+                {% if form.errors %}
+                <p>
+                    {{ form.errors }}
+                </p>
+            {% endif %}
+            </div>
+
+        </div>
+    </form>
+    </div>
+
+<script>
+    document.getElementById('id_phone_number').maxLength = 11;
+
+    document.getElementById('id_traveled_within_last_two_weeks').onchange = function (){
+        specifyTravelLocation()
+    };
+
+    function specifyTravelLocation(){
+        if(id_traveled_within_last_two_weeks.value=='No'){
+            document.getElementById('id_travel_location').disabled = true;
+        }else{
+             document.getElementById('id_travel_location').disabled = false;
+        }
+    }
+
+
+
+    document.getElementById("id_experiencing_symptoms").onchange = function(){
+        checkIfSymptomsIsNo()
+    };
+
+    function checkIfSymptomsIsNo(){
+        if(id_experiencing_symptoms.value=='No'){
+            document.getElementById('id_specify_symptoms').disabled = true;
+        }else{
+            document.getElementById('id_specify_symptoms').disabled = false;
+        }
+    }
+
+</script>
+{% endblock content %}

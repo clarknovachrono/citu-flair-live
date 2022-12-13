@@ -1,0 +1,48 @@
+{% extends 'accounts/navbar.html' %}
+{% load static %}
+{% block content %}
+<style>
+    #health_form_button{
+        padding: 10px;
+        display: inline-block;
+        background: var(--maroon);
+        color: var(--gold);
+        outline: none;
+        margin-top: 5px;
+        width: 150px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    #features_button{
+        padding: 10px;
+        display: inline-block;
+        background: var(--gold);
+        color: var(--maroon);
+        outline: none;
+        width: 150px;
+        text-align: center;
+        margin-top: 5px;
+        text-transform: uppercase;
+    }
+</style>
+    <section class="hero">
+        <div class="left_side">
+            <h1>Teknoy Health Declaration Form Logger with Facial Recognition</h1>
+            <div class="hero_logos">
+                <img src="{% static 'images/form.jpg' %}" alt="form_log">
+                <img src="{% static 'images/face_recognition.png' %}" alt="face recognition">
+                <img src="{% static 'images/logs.jpg' %}" alt="logs">
+            </div>
+            <p>FLAIR aims to provide hassle free health form declarations. You can fill-up anytime, anywhere, and in the comfort of
+                your homes. Now you don't have to worry about having a transmission during the filling up of health forms physically.
+                We also support real time face recognition.
+            </p>
+            <a href="{% url 'healthform' %}" id="health_form_button">Health Form</a>
+            <a href="" id="features_button">Features</a>
+        </div>
+        <div class="right_side">
+            <img src="{% static 'images/landing_page.jpg' %}" alt="landing page">
+        </div>
+    </section>
+    {% include 'accounts/footer.html' %}
+{% endblock content %}

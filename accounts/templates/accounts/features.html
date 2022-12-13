@@ -1,0 +1,88 @@
+{% extends 'accounts/navbar.html' %}
+{% load static %}
+{% block content %}
+<style>
+    #features {
+        height: 620px;
+        width: 100%;
+        background: var(--maroon);
+    }
+    .face-feature,
+    .user-feature,
+    .health-feature {
+        background: var(--gold);
+        height: 250px;
+        width: 33%;
+        padding: 20px;
+        text-align: center;
+    }
+    .features-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%; /* this is needed to align the items in the center */
+    }
+    h2{
+        color: var(--maroon);
+        text-transform: uppercase
+    }
+    p {
+        line-height: 2.6em;
+        font-weight: bold;
+        margin-top: 10px;
+        color: var(--maroon);
+    }
+
+    @media(max-width: 768px){
+        #features{
+           height: auto;
+           margin-top: 20px;
+           padding: 20px;
+        }
+
+        .features-container{
+            flex-direction: column;
+        }
+
+        .face-feature,
+        .user-feature,
+        .health-feature {
+            width: 70%;
+        }
+
+    }
+</style>
+
+<section id="features">
+    <div class="container features-container">
+        <div class="face-feature">
+            <h2>
+                Real Time Facial Recognition
+            </h2>
+            <p>
+                Face recognition features allows the system to easily keep track of users going in and out the campus.
+            </p>
+        </div>
+        <div class="user-feature">
+            <h2>
+                Real Time User Administration
+            </h2>
+            <p>
+                Admins of the system can easily handle users, thanks to the integrated user admission feature.
+            </p>
+        </div>
+        <div class="health-feature">
+            <h2>
+                Real Time Health Form Administration
+            </h2>
+            <p>
+                Health Forms are kept in the database and the system can use this to determine infected individuals. Users can
+                also supply information whether they are diagnosed with Covid-19.
+            </p>
+        </div>
+    </div>
+
+</section>
+{% include 'accounts/footer.html' %}
+
+{% endblock content %}

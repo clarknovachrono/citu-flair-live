@@ -1,0 +1,49 @@
+{% extends 'accounts/navbar.html' %}
+{% load static %}
+{% block content %}
+<style>
+    #about-intro{
+        max-width: 50%;
+        padding: 20px;
+    }
+    @media(max-width: 768px){
+        #about-intro{
+            max-width: none;
+        }
+    }
+</style>
+    <section class="about">
+        <div class="container about_container">
+            <h1>About Us</h1>
+            <p id="about-intro">We are a group of Information Technology students from Cebu Institute of Technology - University. The team is
+            composed of talented and skilled individuals that is determined to give the users comfortability and convenience.
+            </p>
+            <h1 style="margin: 20px 0 20px;">TEAM PACTS</h1>
+                <div class="personal">
+
+                    <div class="tanola">
+                        <img src="{% static 'images/tanola.jpg' %}" alt="">
+                        <p>Frontend | Backend developer</p>
+                    </div>
+                    <div class="sopsop">
+                        <img src="{% static 'images/sopsop.jpg' %}" alt="">
+                        <p>Frontend Developer | Documentation</p>
+                    </div>
+                    <div class="casia">
+                        <img src="{% static 'images/casia.jpg' %}" alt="">
+                        <p>Frontend Developer | Documentation</p>
+                    </div>
+                    <div class="poris">
+                        <img src="{% static 'images/poris.jpg' %}" alt="">
+                        <p>Documentation | Frontend Developer</p>
+                    </div>
+                    <div class="abarsosa">
+                        <img src="{% static 'images/abarsosa.jpg' %}" alt="">
+                        <p>Frontend Developer | Documentation</p>
+                    </div>
+                </div>
+
+        </div>
+    </section>
+    {% include 'accounts/footer.html' %}
+{% endblock content %}
