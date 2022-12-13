@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-&1eqr7agf!^gl!+9e3zyob+3=d6%b2px4ngw%fvjnp(fz3@b3n"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['citu-flair.herokuapp.com', '127.0.0.1']
 
